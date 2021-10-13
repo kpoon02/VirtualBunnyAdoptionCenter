@@ -1,11 +1,16 @@
-# My Personal Project
+# Katherine's Personal Project
 
-## A subtitle
+## Virtual Bunny Adoption Center
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+> This *Virtual Bunny Adoption Center* application allows users to browse and choose from a selection of bunnies to adopt, 
+as well as being able to view previously adopted bunnies!
 
-An example of text with **bold** and *italic* fonts.  Note that the IntelliJ markdown previewer doesn't seem to render 
-the bold and italic fonts correctly but they will appear correctly on GitHub.
+The application is useful for:
+   - people who are interested in adopting a bunny 
+   - also a useful tool for adoption organizations that need a structured and organized way to put 
+their bunnies up for adoption.  
+
+Personally, I think bunnies are one of my favourite animals and after hearing about a local rabbit culling near the 
+Vancouver International Airport, I was inspired to create this project to show appreciation for these cute animals and 
+implement working code that enhances the process of animal adoption.  
+
