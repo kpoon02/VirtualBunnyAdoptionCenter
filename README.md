@@ -18,5 +18,5 @@ implement working code that enhances the process of animal adoption.
 
 - As a user, I want to be able to add an adoption profile
 - As a user, I want to be able to view bunnies up for adoption
-- As a user, I want to be able to place bunnies in "my cart"
-- As a user, I want to be able to see previously adopted bunnies
+- As a user, I want to be able to add adopted bunnies
+- As a user, I want to be able to see a profile's owned bunnies
