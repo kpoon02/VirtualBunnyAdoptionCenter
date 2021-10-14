@@ -41,7 +41,7 @@ public class BunnyAdoptionApp {
         System.out.println("Would you like to view the adoptable bunnies? Yes/No");
         String view = scan.nextLine();
         if (view.equals("Yes")) {
-            for (Bunny b : adoptableBunnies.getAdoptableBunnies()) {
+            for (Bunny b : adoptableBunnies.getAdoptableBunniesList()) {
                 b.displayBunny();
             }
             adoptBunny();
@@ -56,7 +56,7 @@ public class BunnyAdoptionApp {
         if (adopt.equals("Yes")) {
             System.out.println("Which bunny would you like to adopt? Enter bunny number: ");
             String bunnyNum = scan.nextLine();
-            ownedBunnies.addBunny(adoptableBunnies.getAdoptableBunnies().get(Integer.valueOf(bunnyNum) - 1));
+            ownedBunnies.addBunny(adoptableBunnies.getAdoptableBunniesList().get(Integer.valueOf(bunnyNum) - 1));
             adoptableBunnies.removeBunny(Integer.valueOf(bunnyNum) - 1);
             System.out.println("You have adopted bunny #" + bunnyNum);
             viewOwnedBunnies();
