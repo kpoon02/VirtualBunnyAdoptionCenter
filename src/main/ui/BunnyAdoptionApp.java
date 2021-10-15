@@ -21,6 +21,8 @@ public class BunnyAdoptionApp {
         runBunnyAdoptionApp();
     }
 
+    //MODIFIES: this
+    //EFFECTS: Allows users to create a profile or exit program
     public void runBunnyAdoptionApp() {
         adoptableBunnies = new AdoptableBunnies();
         System.out.println("Welcome to the Virtual Bunny Adoption Center!  How may I help you today?");
@@ -37,6 +39,8 @@ public class BunnyAdoptionApp {
         }
     }
 
+
+    //EFFECTS: show user adoptable bunnies if they would like to view, run quit otherwise
     public void viewBunny() {
         System.out.println("Would you like to view the adoptable bunnies? Yes/No");
         String view = scan.nextLine();
@@ -50,6 +54,8 @@ public class BunnyAdoptionApp {
         }
     }
 
+    //MODIFIES: this
+    //EFFECTS: if user adopts, add numbered bunny to owned bunnies, remove from adoptable bunnies, otherwise quit
     public void adoptBunny() {
         System.out.println("Would you like to adopt a bunny? Yes/No");
         String adopt = scan.nextLine();
@@ -65,6 +71,7 @@ public class BunnyAdoptionApp {
         }
     }
 
+    //EFFECTS: show users their owned bunnies if they say Yes, otherwise runs quit method
     public void viewOwnedBunnies() {
         System.out.println("Would you like to view your owned bunnies? Yes/No");
         String seeMyBunnies = scan.nextLine();
@@ -78,6 +85,7 @@ public class BunnyAdoptionApp {
         }
     }
 
+    //EFFECTS: quits the application if user says Yes, if not runs viewBunny method
     private void quit() {
         System.out.println("Would you like to quit?");
         String quit = scan.nextLine();

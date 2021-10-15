@@ -8,6 +8,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+//Test classes
 class BunnyAdoptionTest {
     private AdoptionProfile profile;
     private OwnedBunnies myBunnies;
