@@ -16,7 +16,23 @@ public class Bunny {
     }
 
     //EFFECTS: prints out the bunny name, colour and price
-    public void displayBunny() {
-        System.out.println("Bunny Name: " + bunnyName + "    Colour: " + colour + "    Price: " + price);
+    public String displayBunny() {
+        String bunnyMessage = "Bunny Name: " + bunnyName + "  Colour: " + colour + "  Price: " + price;
+        return bunnyMessage;
+    }
+
+    //EFFECTS: returns the name of the bunny
+    public String getBunnyName() {
+        return bunnyName;
+    }
+
+    //EFFECTS: returns the colour of the bunny
+    public String getBunnyColour() {
+        return colour;
+    }
+
+    //EFFECTS: return the price of the bunny
+    public double getBunnyPrice() {
+        return price;
     }
 }

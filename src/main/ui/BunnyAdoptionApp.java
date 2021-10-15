@@ -42,7 +42,7 @@ public class BunnyAdoptionApp {
         String view = scan.nextLine();
         if (view.equals("Yes")) {
             for (Bunny b : adoptableBunnies.getAdoptableBunniesList()) {
-                b.displayBunny();
+                System.out.println(b.displayBunny());
             }
             adoptBunny();
         } else if (view.equals("No")) {
@@ -69,8 +69,8 @@ public class BunnyAdoptionApp {
         System.out.println("Would you like to view your owned bunnies? Yes/No");
         String seeMyBunnies = scan.nextLine();
         if (seeMyBunnies.equals("Yes")) {
-            for (Bunny b : ownedBunnies.getOwnedBunnies()) {
-                b.displayBunny();
+            for (Bunny b : ownedBunnies.getListOfOwnedBunnies()) {
+                System.out.println(b.displayBunny());
             }
             viewBunny();
         } else if (seeMyBunnies.equals("No")) {

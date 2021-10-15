@@ -20,7 +20,7 @@ public class OwnedBunnies {
     }
 
     //EFFECTS: returns list of owned bunnies
-    public List<Bunny> getOwnedBunnies() {
+    public List<Bunny> getListOfOwnedBunnies() {
         return listOfBunnies;
     }
 }

@@ -21,8 +21,8 @@ public class AdoptionProfile {
     }
 
     //EFFECTS: returns the list of owned bunnies
-    //public OwnedBunnies getOwnedBunnies() {
-    //    return ownedBunnies;
-    //}
+    public OwnedBunnies getOwnedBunnies() {
+        return ownedBunnies;
+    }
 }
 

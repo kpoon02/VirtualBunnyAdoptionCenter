@@ -2,8 +2,8 @@
 
 ## Virtual Bunny Adoption Center
 
-> This *Virtual Bunny Adoption Center* application allows users to browse and choose from a selection of bunnies to adopt, 
-as well as being able to view previously adopted bunnies!
+> This *Virtual Bunny Adoption Centre* application allows users to create a profile to browse and choose from a 
+> selection of bunnies to adopt, as well as being able to view previously adopted bunnies!
 
 **The application is useful for:**
    - people who are interested in adopting a bunny 
@@ -16,7 +16,7 @@ implement working code that enhances the process of animal adoption.
 
 ## User Stories
 
-- As a user, I want to be able to add an adoption profile
+- As a user, I want to be able to add an new adoption profile
 - As a user, I want to be able to view bunnies up for adoption
 - As a user, I want to be able to add adopted bunnies
-- As a user, I want to be able to see a profile's owned bunnies
+- As a user, I want to be able to see my adopted bunnies
