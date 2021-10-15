@@ -73,11 +73,21 @@ class BunnyAdoptionTest {
     }
 
     @Test
-    void removeBunnyTest() {
+    void removeBunnyNotEmptyTest() {
         List<Bunny> expectedRemoveBunnyTest = new ArrayList<>();
         expectedRemoveBunnyTest.add(bun1);
         expectedRemoveBunnyTest.add(bun2);
         expectedRemoveBunnyTest.add(bun3);
+        assertEquals(expectedRemoveBunnyTest, adoptableBunnies.removeBunny(3));
+    }
+
+    @Test
+    void removeBunnyEmptyTest() {
+        List<Bunny> expectedRemoveBunnyTest = new ArrayList<>();
+        adoptableBunnies.removeBunny(0);
+        adoptableBunnies.removeBunny(0);
+        adoptableBunnies.removeBunny(0);
+        adoptableBunnies.removeBunny(0);
         assertEquals(expectedRemoveBunnyTest, adoptableBunnies.removeBunny(3));
     }
 
