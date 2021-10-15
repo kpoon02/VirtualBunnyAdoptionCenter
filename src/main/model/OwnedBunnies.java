@@ -5,7 +5,7 @@ import java.util.List;
 
 //Represents a list of bunnies that is adopted/owned by the user
 public class OwnedBunnies {
-    private List<Bunny> listOfBunnies;
+    private final List<Bunny> listOfBunnies;
 
     //EFFECTS: creates an empty list of bunnies
     public OwnedBunnies() {

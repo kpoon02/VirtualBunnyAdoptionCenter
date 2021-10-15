@@ -2,9 +2,9 @@ package model;
 
 //Represents a bunny with a name, colour and price
 public class Bunny {
-    private String bunnyName;
-    private String colour;
-    private double price;
+    private final String bunnyName;
+    private final String colour;
+    private final double price;
 
     //REQUIRES: name has a non-zero length
     //MODIFIES: this (?)

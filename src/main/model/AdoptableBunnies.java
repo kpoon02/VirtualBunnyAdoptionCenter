@@ -5,11 +5,11 @@ import java.util.List;
 
 //Represents a list of bunnies that are available to be adopted
 public class AdoptableBunnies {
-    private Bunny bun1;
-    private Bunny bun2;
-    private Bunny bun3;
-    private Bunny bun4;
-    private List<Bunny> adoptableBunniesList;
+    private final Bunny bun1;
+    private final Bunny bun2;
+    private final Bunny bun3;
+    private final Bunny bun4;
+    private final List<Bunny> adoptableBunniesList;
 
     //MODIFIES: this
     //EFFECTS: creates an empty list of bunnies and adds specific bunnies to the list
@@ -34,7 +34,12 @@ public class AdoptableBunnies {
     //MODIFIES: this
     //EFFECTS: removes the bunny of integer index in the list and returns list of adoptable bunnies
     public List<Bunny> removeBunny(int index) {
-        adoptableBunniesList.remove(index);
-        return adoptableBunniesList;
+        if (adoptableBunniesList.size() == 0) {
+            List<Bunny> emptyBunnyList = new ArrayList<>();
+            return emptyBunnyList;
+        } else {
+            adoptableBunniesList.remove(index);
+            return adoptableBunniesList;
+        }
     }
 }
