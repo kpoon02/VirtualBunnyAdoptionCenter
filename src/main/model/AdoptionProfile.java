@@ -1,10 +1,14 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 //Represents an adoption profile
-public class AdoptionProfile {
+public class AdoptionProfile implements Writable {
     private final String name;
     private final OwnedBunnies ownedBunnies;
 
@@ -23,6 +27,24 @@ public class AdoptionProfile {
     //EFFECTS: returns the list of owned bunnies
     public OwnedBunnies getOwnedBunnies() {
         return ownedBunnies;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("ownedBunnies", ownedBunniesToJson());
+        return json;
+    }
+
+    // EFFECTS: returns ownedBunnies in this adoption profile as a JSON array
+    private JSONArray ownedBunniesToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Bunny b : getOwnedBunnies().getListOfOwnedBunnies()) {
+            jsonArray.put(b.toJson());
+        }
+
+        return jsonArray;
     }
 }
 

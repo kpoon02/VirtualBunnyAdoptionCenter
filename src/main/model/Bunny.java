@@ -1,7 +1,10 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
 //Represents a bunny with a name, colour and price
-public class Bunny {
+public class Bunny implements Writable {
     private final String bunnyName;
     private final String colour;
     private final double price;
@@ -34,5 +37,14 @@ public class Bunny {
     //EFFECTS: return the price of the bunny
     public double getBunnyPrice() {
         return price;
+    }
+
+    @Override
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", bunnyName);
+        json.put("colour", colour);
+        json.put("price", price);
+        return json;
     }
 }

@@ -16,7 +16,9 @@ implement working code that enhances the process of animal adoption.
 
 ## User Stories
 
-- As a user, I want to be able to add an new adoption profile
+- As a user, I want to be able to add a new adoption profile
 - As a user, I want to be able to view bunnies up for adoption
 - As a user, I want to be able to add adopted bunnies
 - As a user, I want to be able to see my adopted bunnies
+- As a user, I want to be able to save my created adoption profile with my name and adopted bunnies
+- As a user, I want to be able to load my previously created adoption profile
