@@ -1,0 +1,15 @@
+{
+    "ownedBunnies": [
+        {
+            "colour": "Light auburn",
+            "price": 250,
+            "name": "Gochi"
+        },
+        {
+            "colour": "White",
+            "price": 100,
+            "name": "Fluffy"
+        }
+    ],
+    "name": "Katherine"
+}

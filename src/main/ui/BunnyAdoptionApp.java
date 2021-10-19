@@ -57,6 +57,8 @@ public class BunnyAdoptionApp {
         viewBunny();
     }
 
+    // This method references code from the stleary/Json-java repo
+    // Link: https://github.com/stleary/JSON-java
     // MODIFIES: this
     // EFFECTS: loads adoption profile from file
     public void loadProfile() {
@@ -73,11 +75,6 @@ public class BunnyAdoptionApp {
                         adoptableBunnies.getAdoptableBunniesList().remove(i);
                     }
                 }
-/*                for (Bunny ab : adoptableBunnies.getAdoptableBunniesList()) {
-                    if (ob.getBunnyName().equals(ab.getBunnyName())) {
-                        adoptableBunnies.getAdoptableBunniesList().remove(ab);
-                    }
-                }*/
             }
             viewBunny();
         } catch (IOException e) {
@@ -103,6 +100,8 @@ public class BunnyAdoptionApp {
         }
     }
 
+    // This method references code from the stleary/Json-java repo
+    // Link: https://github.com/stleary/JSON-java
     // EFFECTS: saves the adoption profile to file
     public void saveProfile() {
         System.out.println("Would you like to save your profile? Yes/No");
@@ -150,7 +149,7 @@ public class BunnyAdoptionApp {
             }
             saveProfile();
         } else if (seeMyBunnies.equals("No")) {
-            quit();
+            saveProfile();
         }
     }
 

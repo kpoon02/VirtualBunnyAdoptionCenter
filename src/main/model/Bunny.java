@@ -39,6 +39,8 @@ public class Bunny implements Writable {
         return price;
     }
 
+    // This method references code from the stleary/Json-java repo
+    // Link: https://github.com/stleary/JSON-java
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();

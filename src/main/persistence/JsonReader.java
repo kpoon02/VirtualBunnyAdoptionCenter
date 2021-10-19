@@ -60,7 +60,7 @@ public class JsonReader {
     }
 
     // MODIFIES: ap
-    // EFFECTS: parses bunnies from JSON object and adds it to AdoptionProfile
+    // EFFECTS: parses bunny from JSON object and adds it to AdoptionProfile
     private void addBunny(AdoptionProfile ap, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         String colour = jsonObject.getString("colour");

@@ -7,7 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
-//epresents a writer that writes JSON representation of adoption profile to file
+// This class references code from the stleary/Json-java repo
+// Link: https://github.com/stleary/JSON-java
+//Represents a writer that writes JSON representation of adoption profile to file
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;

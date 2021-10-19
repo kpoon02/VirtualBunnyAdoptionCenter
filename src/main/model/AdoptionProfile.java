@@ -29,6 +29,8 @@ public class AdoptionProfile implements Writable {
         return ownedBunnies;
     }
 
+    // This method references code from the stleary/Json-java repo
+    // Link: https://github.com/stleary/JSON-java
     @Override
     public JSONObject toJson() {
         JSONObject json = new JSONObject();
@@ -37,6 +39,8 @@ public class AdoptionProfile implements Writable {
         return json;
     }
 
+    // This method references code from the stleary/Json-java repo
+    // Link: https://github.com/stleary/JSON-java
     // EFFECTS: returns ownedBunnies in this adoption profile as a JSON array
     private JSONArray ownedBunniesToJson() {
         JSONArray jsonArray = new JSONArray();
