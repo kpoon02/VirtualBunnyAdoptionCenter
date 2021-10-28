@@ -25,6 +25,7 @@ public class JsonReaderTest extends JsonTest {
         }
     }
 
+
     @Test
     void testReaderEmptyAdoptionProfile() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyAdoptionProfile.json");
