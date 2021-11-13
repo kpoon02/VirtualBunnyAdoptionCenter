@@ -127,7 +127,7 @@ public class BunnyAdoptionApp {
         System.out.println("Would you like to adopt a bunny? Yes/No");
         String adopt = scan.nextLine();
         if (adopt.equals("Yes")) {
-            System.out.println("Which bunny would you like to adopt? Enter bunny number: ");
+            System.out.println("Which bunny would you like to adopt? Enter bunny number: (starting from 1 at the top of the list)");
             String bunnyNum = scan.nextLine();
             Bunny adoptionBunny = adoptableBunnies.getAdoptableBunniesList().get(Integer.valueOf(bunnyNum) - 1);
             adoptionProfile.getOwnedBunnies().addBunny(adoptionBunny);
