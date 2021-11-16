@@ -12,6 +12,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 
@@ -49,6 +51,8 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     public void menuGUI() {
+        adoptableBunnies = new AdoptableBunnies();
+
         frame = new JFrame();
         frame.setSize(FRAMEWIDTH, FRAMEHEIGHT);
 
@@ -86,10 +90,46 @@ public class BunnyAdoptionGUI implements ActionListener {
         ActionListener loadProfileListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("load");
+                load();
             }
         };
         loadProfile.addActionListener(loadProfileListener);
+    }
+
+    public void load() {
+        try {
+            adoptionProfile = jsonReader.read();
+            System.out.println("Loaded " + adoptionProfile.getName() + "'s profile from " + JSON_STORE);
+            panel.removeAll();
+            panel.revalidate();
+            panel.repaint();
+            JLabel userName = new JLabel(adoptionProfile.getName());
+            userName.setBounds(50,100,200,25);
+            panel.add(userName);
+            List<Bunny> ownedBunnies = adoptionProfile.getOwnedBunnies().getListOfOwnedBunnies();
+            int i = 0;
+            int k = 1;
+            for (Bunny b: ownedBunnies) {
+                lineOfBunnies = k + "   " + b.displayBunny();
+                JLabel adoptedBunniesLabel = new JLabel(lineOfBunnies);
+                adoptedBunniesLabel.setBounds(50, 150 + i, 1000, 25);
+                panel.add(adoptedBunniesLabel);
+                i += 40;
+                k++;
+            }
+            for (Bunny ob : ownedBunnies) {
+                for (int j = 0; adoptableBunnies.getAdoptableBunniesList().size() > j; j++) {
+                    if (ob.getBunnyName().equals(adoptableBunnies.getAdoptableBunniesList().get(j).getBunnyName())) {
+                        adoptableBunnies.getAdoptableBunniesList().remove(j);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            JLabel cantReadFile = new JLabel("Unable to read from file: " + JSON_STORE);
+            cantReadFile.setBounds(100,100,200,25);
+            panel.add((cantReadFile));
+        }
+        adoptAnother();
     }
 
     public void createProfileGUI() {
@@ -158,23 +198,37 @@ public class BunnyAdoptionGUI implements ActionListener {
     public void seeBunnyShop() {
         panel.removeAll();
         panel.repaint();
-        adoptableBunnies = new AdoptableBunnies();
         if (adoptableBunnies.getAdoptableBunniesList().size() == 0) {
             JLabel noBunniesLabel = new JLabel("Sorry, there are no more bunnies left to adopt!");
-            noBunniesLabel.setBounds(100, 100, 150, 25);
+            noBunniesLabel.setBounds(100, 100, 400, 25);
             panel.add(noBunniesLabel);
+            nextButton = new JButton("See Adopted Bunnies");
+            nextButton.setBounds(100,300,200,25);
+            panel.add(nextButton);
+            seeAdoptedBunniesListener();
+        } else {
+            int i = 0;
+            int k = 1;
+            for (Bunny b : adoptableBunnies.getAdoptableBunniesList()) {
+                lineOfBunnies = k + "   " + b.displayBunny();
+                JLabel adoptableBunniesLabel = new JLabel(lineOfBunnies);
+                adoptableBunniesLabel.setBounds(50, 100 + i, 1000, 25);
+                panel.add(adoptableBunniesLabel);
+                i += 40;
+                k++;
+            }
+            bunnySelect();
         }
-        int i = 0;
-        int k = 1;
-        for (Bunny b : adoptableBunnies.getAdoptableBunniesList()) {
-            lineOfBunnies = k + "   " + b.displayBunny();
-            JLabel adoptableBunniesLabel = new JLabel(lineOfBunnies);
-            adoptableBunniesLabel.setBounds(50, 100 + i, 1000, 25);
-            panel.add(adoptableBunniesLabel);
-            i += 40;
-            k++;
-        }
-        bunnySelect();
+    }
+
+    public void seeAdoptedBunniesListener() {
+        ActionListener seeAdoptedBunniesListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showBunnies();
+            }
+        };
+        nextButton.addActionListener(seeAdoptedBunniesListener);
     }
 
     public void bunnySelect() {
@@ -196,32 +250,36 @@ public class BunnyAdoptionGUI implements ActionListener {
         ActionListener adoptBunnyListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.removeAll();
-                panel.repaint();
                 int bunnyNum = Integer.valueOf(nameTextField.getText());
                 Bunny adoptionBunny = adoptableBunnies.getAdoptableBunniesList().get(bunnyNum - 1);
                 adoptionProfile.getOwnedBunnies().addBunny(adoptionBunny);
                 adoptableBunnies.removeBunny(bunnyNum - 1);
-                questionLabel = new JLabel("Here are your adopted bunnies:");
-                questionLabel.setBounds(50,100,200,25);
-                panel.add(questionLabel);
-                int i = 0;
-                int k = 1;
-                for (Bunny b : adoptionProfile.getOwnedBunnies().getListOfOwnedBunnies()) {
-                    lineOfBunnies = k + "   " + b.displayBunny();
-                    JLabel adoptedBunniesLabel = new JLabel(lineOfBunnies);
-                    adoptedBunniesLabel.setBounds(50, 150 + i, 1000, 25);
-                    panel.add(adoptedBunniesLabel);
-                    i += 40;
-                    k++;
-                }
-                save();
-                adoptAnother();
+                showBunnies();
             }
         };
         nextButton.addActionListener(adoptBunnyListener);
     }
 
+    public void showBunnies() {
+        panel.removeAll();
+        panel.revalidate();
+        panel.repaint();
+        questionLabel = new JLabel("Here are your adopted bunnies:");
+        questionLabel.setBounds(50,100,200,25);
+        panel.add(questionLabel);
+        int i = 0;
+        int k = 1;
+        for (Bunny b : adoptionProfile.getOwnedBunnies().getListOfOwnedBunnies()) {
+            lineOfBunnies = k + "   " + b.displayBunny();
+            JLabel adoptedBunniesLabel = new JLabel(lineOfBunnies);
+            adoptedBunniesLabel.setBounds(50, 150 + i, 1000, 25);
+            panel.add(adoptedBunniesLabel);
+            i += 40;
+            k++;
+        }
+        save();
+        adoptAnother();
+    }
     public void setupNoListener() {
         ActionListener noListener = new ActionListener() {
             @Override
