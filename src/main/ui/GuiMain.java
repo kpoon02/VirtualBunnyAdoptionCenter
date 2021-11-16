@@ -6,12 +6,10 @@ import java.io.FileNotFoundException;
 public class GuiMain {
     public static void main(String[] args) {
 
-//        try {
+        try {
         new BunnyAdoptionGUI();
+        } catch (FileNotFoundException e) {
+            System.out.println("Cannot run the application - file is not found");
+        }
     }
 }
-//        } catch (FileNotFoundException e) {
-//            System.out.println("Cannot run the application - file is not found");
-//        }
-//    }
-//}
