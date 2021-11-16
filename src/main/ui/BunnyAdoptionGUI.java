@@ -2,6 +2,7 @@ package ui;
 
 import model.AdoptableBunnies;
 import model.AdoptionProfile;
+import model.Bunny;
 import model.OwnedBunnies;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -27,6 +28,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     private Scanner scan;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
+    private String lineOfBunnies;
 
     private JLabel label;
     private JFrame frame;
@@ -34,10 +36,10 @@ public class BunnyAdoptionGUI implements ActionListener {
     private JButton newProfile;
     private JButton loadProfile;
     private JButton nextButton;
+    private JButton yesButton;
+    private JButton noButton;
 
     private JLabel nameLabel;
-    private JFrame createProfileFrame;
-    private JPanel createProfilePanel;
     private JTextField nameTextField;
 
     public BunnyAdoptionGUI() {
@@ -126,16 +128,84 @@ public class BunnyAdoptionGUI implements ActionListener {
                 String userName = nameTextField.getText();
                 adoptionProfile = new AdoptionProfile(userName);
 
-                nameLabel = new JLabel("Hello " + userName + "!");
-                nameLabel.setBounds(60, 100, 80, 25);
-                nameLabel.setVisible(true);
+                nameLabel = new JLabel("Hello " + userName + "!\nWould you like to view the adoptable bunnies?");
+                nameLabel.setBounds(60, 100, 200, 25);
                 panel.add(nameLabel);
+
+                yesButton = new JButton("Yes");
+                yesButton.setBounds(100, 150, 150, 25);
+                panel.add(yesButton);
+                setupYesListener();
+
+                noButton = new JButton("No");
+                noButton.setBounds(200, 150, 150, 25);
+                panel.add(noButton);
+                setupNoListener();
             }
         };
         nextButton.addActionListener(nextListener);
     }
 
+    public void setupYesListener() {
+        ActionListener yesListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                seeBunnyShop();
+            }
+        };
+        yesButton.addActionListener(yesListener);
+    }
 
+    public void seeBunnyShop() {
+        panel.remove(yesButton);
+        panel.remove(noButton);
+        panel.remove(nameLabel);
+        panel.revalidate();
+        panel.repaint();
+        adoptableBunnies = new AdoptableBunnies();
+        if (adoptableBunnies.getAdoptableBunniesList().size() == 0) {
+            JLabel noBunniesLabel = new JLabel("Sorry, there are no more bunnies left to adopt!");
+            noBunniesLabel.setBounds(100, 100, 150, 25);
+            panel.add(noBunniesLabel);
+        }
+        int i = 0;
+        for (Bunny b : adoptableBunnies.getAdoptableBunniesList()) {
+            lineOfBunnies = b.displayBunny();
+            JLabel adoptableBunniesLabel = new JLabel(lineOfBunnies);
+            adoptableBunniesLabel.setBounds(100, 100 + i, 1000, 25);
+            panel.add(adoptableBunniesLabel);
+            i += 20;
+        }
+    }
+
+    public void setupNoListener() {
+        ActionListener noListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quit();
+            }
+        };
+        noButton.addActionListener(noListener);
+    }
+
+    public void quit() {
+        panel.remove(yesButton);
+        panel.remove(noButton);
+        panel.remove(nameLabel);
+        panel.revalidate();
+        panel.repaint();
+        JLabel quitLabel = new JLabel("Thanks for dropping by!");
+        quitLabel.setBounds(100,100,200,25);
+        panel.add(quitLabel);
+    }
+
+//    class yourClass extends JPanel { //yourClass is the JPanel
+//        @Override //if you aren't overriding correctly this makes the compiler tell you
+//        protected void paintComponent(Graphics gr){
+//            super.paintComponent(gr);
+//            gr.drawString("string literal or a string variable", 0,10);
+//        }
+//    }
     @Override
     public void actionPerformed(ActionEvent e) {
 

@@ -8,6 +8,7 @@ public class Bunny implements Writable {
     private final String bunnyName;
     private final String colour;
     private final double price;
+    private AdoptableBunnies adoptableBunnies;
 
     //REQUIRES: name has a non-zero length
     //MODIFIES: this (?)
