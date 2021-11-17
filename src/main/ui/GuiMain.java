@@ -7,7 +7,7 @@ public class GuiMain {
     public static void main(String[] args) {
 
         try {
-        new BunnyAdoptionGUI();
+             new BunnyAdoptionGUI();
         } catch (FileNotFoundException e) {
             System.out.println("Cannot run the application - file is not found");
         }
