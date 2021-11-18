@@ -99,6 +99,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         setUpButtonListeners();
     }
 
+    //MODIFIES: this
     //EFFECTS: sets up action listeners for the create profile button and the load profile button
     public void setUpButtonListeners() {
         ActionListener newProfileListener = new ActionListener() {
@@ -139,6 +140,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         adoptAnother();
     }
 
+    //MODIFIES: this
     //EFFECTS: displays a numbered list of owned bunnies as JLabels
     public void createLabelsForOwnedBunnies() {
         List<Bunny> ownedBunnies = adoptionProfile.getOwnedBunnies().getListOfOwnedBunnies();
@@ -191,6 +193,8 @@ public class BunnyAdoptionGUI implements ActionListener {
         nextListener();
     }
 
+    //MODIFIES: this
+    //EFFECTS: calls viewAdoptableBunnies() when the next button is clicked
     public void nextListener() {
         ActionListener nextListener = new ActionListener() {
             @Override
@@ -202,6 +206,8 @@ public class BunnyAdoptionGUI implements ActionListener {
         nextButton.addActionListener(nextListener);
     }
 
+    //MODIFIES: this
+    //EFFECTS: asks the user to choose yes or no to view the adoptable bunnies
     public void viewAdoptableBunnies() {
         panel.removeAll();
         panel.revalidate();
@@ -226,7 +232,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: calls seeBunnyShop() when yes button is clicked
     public void setupYesListener() {
         ActionListener yesListener = new ActionListener() {
             @Override
@@ -238,7 +244,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: shows the list of adoptable bunnies if there are bunnies left, then calls bunnySelect()
     public void seeBunnyShop() {
         panel.removeAll();
         panel.repaint();
@@ -266,7 +272,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: calls showBunnies(0 when nextButton is pressed
     public void seeAdoptedBunniesListener() {
         ActionListener seeAdoptedBunniesListener = new ActionListener() {
             @Override
@@ -278,7 +284,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: prompts users to enter the bunny number that they want to adopt in a text field with next button
     public void bunnySelect() {
         questionLabel = new JLabel("Enter the number of the bunny you would like to adopt:");
         numTextField = new JTextField();
@@ -295,7 +301,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: adds adopted bunny to profile and removes it from the adoptable bunnies list, then calls showBunnies()
     public void adoptBunnyListener() {
         ActionListener adoptBunnyListener = new ActionListener() {
             @Override
@@ -311,7 +317,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: shows the adopted bunnies in a list of JLabels and calls save(), adoptAnother() and clearAllBunnies()
     public void showBunnies() {
         panel.removeAll();
         panel.revalidate();
@@ -335,7 +341,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: calls quit() when no button is pressed
     public void setupNoListener() {
         ActionListener noListener = new ActionListener() {
             @Override
@@ -347,7 +353,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: shows a save button on the panel
     public void save() {
         saveButton = new JButton("Save");
         saveButton.setBounds(100,350,80,25);
@@ -355,6 +361,8 @@ public class BunnyAdoptionGUI implements ActionListener {
         saveListener();
     }
 
+    //MODIFIES: this
+    //EFFECTS: clears all adopted bunnies from profile and resets the adoptable bunnies back to the original list
     public void clearAllBunnies() {
         clearBunniesButton = new JButton("Clear Adopted Bunnies");
         clearBunniesButton.setBounds(200,50,200,25);
@@ -362,6 +370,8 @@ public class BunnyAdoptionGUI implements ActionListener {
         clearAllBunniesListener();
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates a new AdoptionProfile with same name and new AdoptableBunnies() then calls showBunnies()
     public void clearAllBunniesListener() {
         ActionListener clearAllBunniesListener = new ActionListener() {
             @Override
@@ -376,7 +386,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: saves the profile or catches FileNotFoundException when save button is pressed
     public void saveListener() {
         ActionListener saveListener = new ActionListener() {
             @Override
@@ -403,7 +413,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: shows a button to adopt another bunny from the adoptable bunnies
     public void adoptAnother() {
         adoptButton = new JButton("Adopt Another Bunny");
         adoptButton.setBounds(200,350,200,25);
@@ -412,7 +422,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: calls seeBunnyShop() when adoptButton is pressed
     public void adoptListener() {
         ActionListener adoptListener = new ActionListener() {
             @Override
@@ -424,7 +434,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: shows a goodbye JLabel
     public void quit() {
         panel.remove(yesButton);
         panel.remove(noButton);
@@ -436,8 +446,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         panel.add(quitLabel);
     }
 
-    //MODIFIES: this
-    //EFFECTS:
+    //EFFECTS: the default actionPerformed overriden method if no other overriden method is specified
     @Override
     public void actionPerformed(ActionEvent e) {
     }
