@@ -88,11 +88,11 @@ public class BunnyAdoptionGUI implements ActionListener {
 
         bunnyImage = new ImageIcon(getClass().getResource("bunnyPicture.jpg"));
         Image image = bunnyImage.getImage();
-        Image newImage = image.getScaledInstance(200,200, java.awt.Image.SCALE_SMOOTH);
+        Image newImage = image.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
         bunnyImage = new ImageIcon(newImage);
 
         bunnyImageLabel = new JLabel(bunnyImage);
-        bunnyImageLabel.setBounds(30,100,400,400);
+        bunnyImageLabel.setBounds(30, 100, 400, 400);
         panel.repaint();
         panel.add(bunnyImageLabel);
 
@@ -128,13 +128,13 @@ public class BunnyAdoptionGUI implements ActionListener {
             panel.revalidate();
             panel.repaint();
             JLabel name = new JLabel(adoptionProfile.getName());
-            name.setBounds(50,100,200,25);
+            name.setBounds(50, 100, 200, 25);
             panel.add(name);
             createLabelsForOwnedBunnies();
             removeAdoptedBunnies();
         } catch (IOException e) {
             JLabel cantReadFile = new JLabel("Unable to read from file: " + JSON_STORE);
-            cantReadFile.setBounds(100,100,200,25);
+            cantReadFile.setBounds(100, 100, 200, 25);
             panel.add((cantReadFile));
         }
         adoptAnother();
@@ -146,7 +146,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         List<Bunny> ownedBunnies = adoptionProfile.getOwnedBunnies().getListOfOwnedBunnies();
         int i = 0;
         int k = 1;
-        for (Bunny b: ownedBunnies) {
+        for (Bunny b : ownedBunnies) {
             lineOfBunnies = k + "   " + b.displayBunny();
             JLabel adoptedBunniesLabel = new JLabel(lineOfBunnies);
             adoptedBunniesLabel.setBounds(50, 150 + i, 1000, 25);
@@ -253,7 +253,7 @@ public class BunnyAdoptionGUI implements ActionListener {
             noBunniesLabel.setBounds(100, 100, 400, 25);
             panel.add(noBunniesLabel);
             nextButton = new JButton("See Adopted Bunnies");
-            nextButton.setBounds(100,300,200,25);
+            nextButton.setBounds(100, 300, 200, 25);
             panel.add(nextButton);
             seeAdoptedBunniesListener();
         } else {
@@ -288,8 +288,8 @@ public class BunnyAdoptionGUI implements ActionListener {
     public void bunnySelect() {
         questionLabel = new JLabel("Enter the number of the bunny you would like to adopt:");
         numTextField = new JTextField();
-        questionLabel.setBounds(50,300,400,25);
-        numTextField.setBounds(50,350,200,25);
+        questionLabel.setBounds(50, 300, 400, 25);
+        numTextField.setBounds(50, 350, 200, 25);
         panel.add(questionLabel);
         panel.add(numTextField);
 
@@ -323,7 +323,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         panel.revalidate();
         panel.repaint();
         questionLabel = new JLabel("Here are your adopted bunnies:");
-        questionLabel.setBounds(50,100,200,25);
+        questionLabel.setBounds(50, 100, 200, 25);
         panel.add(questionLabel);
         int i = 0;
         int k = 1;
@@ -356,7 +356,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     //EFFECTS: shows a save button on the panel
     public void save() {
         saveButton = new JButton("Save");
-        saveButton.setBounds(100,350,80,25);
+        saveButton.setBounds(100, 350, 80, 25);
         panel.add(saveButton);
         saveListener();
     }
@@ -365,7 +365,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     //EFFECTS: clears all adopted bunnies from profile and resets the adoptable bunnies back to the original list
     public void clearAllBunnies() {
         clearBunniesButton = new JButton("Clear Adopted Bunnies");
-        clearBunniesButton.setBounds(200,50,200,25);
+        clearBunniesButton.setBounds(200, 50, 200, 25);
         panel.add(clearBunniesButton);
         clearAllBunniesListener();
     }
@@ -397,13 +397,13 @@ public class BunnyAdoptionGUI implements ActionListener {
                     jsonWriter.close();
                     System.out.println("Saved " + adoptionProfile.getName() + " to " + JSON_STORE);
                     JLabel savedLabel = new JLabel("Saved profile successfully");
-                    savedLabel.setBounds(80,375,200,25);
+                    savedLabel.setBounds(80, 375, 200, 25);
                     savedLabel.setForeground(Color.green);
                     panel.add(savedLabel);
                     panel.repaint();
                 } catch (FileNotFoundException fe) {
                     JLabel savedLabel = new JLabel("Unable to write to file: " + JSON_STORE);
-                    savedLabel.setBounds(85,375,200,25);
+                    savedLabel.setBounds(85, 375, 200, 25);
                     panel.add(savedLabel);
                     panel.repaint();
                 }
@@ -416,7 +416,7 @@ public class BunnyAdoptionGUI implements ActionListener {
     //EFFECTS: shows a button to adopt another bunny from the adoptable bunnies
     public void adoptAnother() {
         adoptButton = new JButton("Adopt Another Bunny");
-        adoptButton.setBounds(200,350,200,25);
+        adoptButton.setBounds(200, 350, 200, 25);
         panel.add(adoptButton);
         adoptListener();
     }
@@ -442,7 +442,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         panel.revalidate();
         panel.repaint();
         JLabel quitLabel = new JLabel("Thanks for dropping by!");
-        quitLabel.setBounds(100,100,200,25);
+        quitLabel.setBounds(100, 100, 200, 25);
         panel.add(quitLabel);
     }
 
