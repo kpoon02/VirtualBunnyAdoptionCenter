@@ -16,6 +16,7 @@ public class OwnedBunnies {
     // EFFECTS: adds bunny to the list of owned bunnies
     public List<Bunny> addBunny(Bunny b) {
         listOfBunnies.add(b);
+        EventLog.getInstance().logEvent(new Event("Bunny added to owned Bunnies in profile."));
         return listOfBunnies;
     }
 

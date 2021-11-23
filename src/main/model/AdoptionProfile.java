@@ -29,6 +29,10 @@ public class AdoptionProfile implements Writable {
         return ownedBunnies;
     }
 
+    public void clearOwnedBunnies() {
+        EventLog.getInstance().logEvent(new Event("All bunnies cleared from owned Bunnies in profile."));
+    }
+
     // This method references code from the stleary/Json-java repo
     // Link: https://github.com/stleary/JSON-java
     @Override

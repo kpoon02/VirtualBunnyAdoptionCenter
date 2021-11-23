@@ -1,8 +1,11 @@
 package ui;
 
+import javafx.scene.text.Text;
 import model.AdoptableBunnies;
 import model.AdoptionProfile;
 import model.Bunny;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -46,6 +49,9 @@ public class BunnyAdoptionGUI implements ActionListener {
     private JTextField nameTextField;
     private JButton clearBunniesButton;
     private JTextField numTextField;
+    private JTextArea logArea;
+    private JButton quitButton;
+
 
     //runs BunnyAdoptionGUI
     public BunnyAdoptionGUI() throws FileNotFoundException {
@@ -58,6 +64,9 @@ public class BunnyAdoptionGUI implements ActionListener {
     //EFFECTS: Allows users to choose to create profile or load profile
     public void menuGUI() {
         adoptableBunnies = new AdoptableBunnies();
+
+        logArea = new JTextArea();
+        logArea.setEditable(false);
 
         frame = new JFrame();
         frame.setSize(FRAMEWIDTH, FRAMEHEIGHT);
@@ -95,6 +104,8 @@ public class BunnyAdoptionGUI implements ActionListener {
         bunnyImageLabel.setBounds(30, 100, 400, 400);
         panel.repaint();
         panel.add(bunnyImageLabel);
+
+        quitButton();
 
         setUpButtonListeners();
     }
@@ -137,6 +148,7 @@ public class BunnyAdoptionGUI implements ActionListener {
             cantReadFile.setBounds(100, 100, 200, 25);
             panel.add((cantReadFile));
         }
+        quitButton();
         adoptAnother();
     }
 
@@ -191,6 +203,8 @@ public class BunnyAdoptionGUI implements ActionListener {
         nextButton.setBounds(150, 150, 150, 25);
         panel.add(nextButton);
         nextListener();
+
+        quitButton();
     }
 
     //MODIFIES: this
@@ -228,6 +242,9 @@ public class BunnyAdoptionGUI implements ActionListener {
         noButton = new JButton("No");
         noButton.setBounds(225, 150, 150, 25);
         panel.add(noButton);
+
+        quitButton();
+
         setupNoListener();
     }
 
@@ -269,6 +286,7 @@ public class BunnyAdoptionGUI implements ActionListener {
             }
             bunnySelect();
         }
+        quitButton();
     }
 
     //MODIFIES: this
@@ -297,7 +315,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         nextButton.setBounds(50, 400, 150, 25);
         panel.add(nextButton);
         adoptBunnyListener();
-
+        quitButton();
     }
 
     //MODIFIES: this
@@ -338,6 +356,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         save();
         adoptAnother();
         clearAllBunnies();
+        quitButton();
     }
 
     //MODIFIES: this
@@ -378,7 +397,7 @@ public class BunnyAdoptionGUI implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 adoptionProfile = new AdoptionProfile(userName);
                 adoptableBunnies = new AdoptableBunnies();
-                System.out.println(userName);
+                adoptionProfile.clearOwnedBunnies();
                 showBunnies();
             }
         };
@@ -434,16 +453,44 @@ public class BunnyAdoptionGUI implements ActionListener {
     }
 
     //MODIFIES: this
+    //EFFECTS: shows a button to adopt another bunny from the adoptable bunnies
+    public void quitButton() {
+        quitButton = new JButton("Quit");
+        quitButton.setBounds(380, 20, 100, 25);
+        panel.add(quitButton);
+        panel.revalidate();
+        panel.repaint();
+        quitListener();
+    }
+
+    //MODIFIES: this
+    //EFFECTS: calls seeBunnyShop() when adoptButton is pressed
+    public void quitListener() {
+        ActionListener quitListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                quit();
+            }
+        };
+        quitButton.addActionListener(quitListener);
+    }
+
+    //MODIFIES: this
     //EFFECTS: shows a goodbye JLabel
     public void quit() {
-        panel.remove(yesButton);
-        panel.remove(noButton);
-        panel.remove(questionLabel);
+        panel.removeAll();
         panel.revalidate();
         panel.repaint();
         JLabel quitLabel = new JLabel("Thanks for dropping by!");
         quitLabel.setBounds(100, 100, 200, 25);
         panel.add(quitLabel);
+        printLog();
+    }
+    
+    public void printLog() {
+        for (Event next : EventLog.getInstance()) {
+            System.out.println(next.toString() + "\n");
+        }
     }
 
     //EFFECTS: the default actionPerformed overriden method if no other overriden method is specified
