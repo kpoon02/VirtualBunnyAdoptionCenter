@@ -274,21 +274,26 @@ public class BunnyAdoptionGUI implements ActionListener {
             panel.add(nextButton);
             seeAdoptedBunniesListener();
         } else {
-            int i = 0;
-            int k = 1;
-            for (Bunny b : adoptableBunnies.getAdoptableBunniesList()) {
-                lineOfBunnies = k + "   " + b.displayBunny();
-                JLabel adoptableBunniesLabel = new JLabel(lineOfBunnies);
-                adoptableBunniesLabel.setBounds(50, 100 + i, 1000, 25);
-                panel.add(adoptableBunniesLabel);
-                i += 40;
-                k++;
-            }
-            bunnySelect();
+            displayAdoptableBunnies();
         }
         quitButton();
     }
 
+    //MODIFIES: this
+    //EFFECTS: displays all the adoptable bunnies in a list of JLabels
+    public void displayAdoptableBunnies() {
+        int i = 0;
+        int k = 1;
+        for (Bunny b : adoptableBunnies.getAdoptableBunniesList()) {
+            lineOfBunnies = k + "   " + b.displayBunny();
+            JLabel adoptableBunniesLabel = new JLabel(lineOfBunnies);
+            adoptableBunniesLabel.setBounds(50, 100 + i, 1000, 25);
+            panel.add(adoptableBunniesLabel);
+            i += 40;
+            k++;
+        }
+        bunnySelect();
+    }
     //MODIFIES: this
     //EFFECTS: calls showBunnies(0 when nextButton is pressed
     public void seeAdoptedBunniesListener() {
@@ -414,7 +419,6 @@ public class BunnyAdoptionGUI implements ActionListener {
                     jsonWriter.open();
                     jsonWriter.write(adoptionProfile);
                     jsonWriter.close();
-                    System.out.println("Saved " + adoptionProfile.getName() + " to " + JSON_STORE);
                     JLabel savedLabel = new JLabel("Saved profile successfully");
                     savedLabel.setBounds(80, 375, 200, 25);
                     savedLabel.setForeground(Color.green);

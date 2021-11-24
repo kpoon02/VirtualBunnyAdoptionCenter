@@ -18,7 +18,6 @@ public class BunnyAdoptionApp {
     private static final String JSON_STORE = "./data/adoptionProfile.json";
     private AdoptionProfile adoptionProfile;
     private AdoptableBunnies adoptableBunnies;
-    private OwnedBunnies ownedBunnies;
     private Scanner scan;
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
@@ -50,7 +49,7 @@ public class BunnyAdoptionApp {
     // MODIFIES: this
     // EFFECTS: creates a new adoption profile
     public void createProfile() {
-        ownedBunnies = new OwnedBunnies();
+        OwnedBunnies ownedBunnies = new OwnedBunnies();
         System.out.println("What is your name?");
         String userName = scan.nextLine();
         adoptionProfile = new AdoptionProfile(userName);

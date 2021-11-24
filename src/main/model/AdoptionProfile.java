@@ -9,8 +9,8 @@ import java.util.List;
 
 //Represents an adoption profile
 public class AdoptionProfile implements Writable {
-    private final String name;
-    private final OwnedBunnies ownedBunnies;
+    private String name;
+    private OwnedBunnies ownedBunnies;
 
     //REQUIRES: a non-zero length string for accountName
     //EFFECTS: creates an adoption profile with a name and an empty list of owned bunnies
