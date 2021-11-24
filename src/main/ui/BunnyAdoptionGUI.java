@@ -294,6 +294,7 @@ public class BunnyAdoptionGUI implements ActionListener {
         }
         bunnySelect();
     }
+
     //MODIFIES: this
     //EFFECTS: calls showBunnies(0 when nextButton is pressed
     public void seeAdoptedBunniesListener() {
@@ -490,7 +491,8 @@ public class BunnyAdoptionGUI implements ActionListener {
         panel.add(quitLabel);
         printLog();
     }
-    
+
+    //EFFECTS: prints out the event log
     public void printLog() {
         for (Event next : EventLog.getInstance()) {
             System.out.println(next.toString() + "\n");

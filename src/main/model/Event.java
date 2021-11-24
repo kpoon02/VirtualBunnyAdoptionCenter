@@ -3,9 +3,10 @@ package model;
 import java.util.Calendar;
 import java.util.Date;
 
-
+// This class references code from the CPSC210/AlarmSystem repo
+// Link: https://github.students.cs.ubc.ca/CPSC210/AlarmSystem
 /**
- * Represents an alarm system event.
+ * Represents a bunny adoption event.
  */
 public class Event {
     private static final int HASH_CONSTANT = 13;
