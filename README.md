@@ -25,11 +25,27 @@ implement working code that enhances the process of animal adoption.
 
 
 **Phase 4: Task 2:**
-No events are logged when the program is run because no significant event occurs regarding X and Ys...4
+***
+Thu Nov 25 11:35:54 PST 2021
+Bunny added to owned Bunnies in profile.
+
+Thu Nov 25 11:35:59 PST 2021
+Bunny added to owned Bunnies in profile.
+
+Thu Nov 25 11:36:04 PST 2021
+Bunny added to owned Bunnies in profile.
+
+Thu Nov 25 11:36:05 PST 2021
+All bunnies cleared from owned Bunnies in profile.
+
+Thu Nov 25 11:36:11 PST 2021
+Bunny added to owned Bunnies in profile.
+***
+
 
 **Phase 4: Task 3:**
-From inspection of my UML, my design seems reasonable but possible changes are that:
-- I could introduce helper methods in my BunnyAdoptionGUI class, as I noticed some methods
+From inspection of my UML, my design seems reasonable but possible changes include:
+- Introducing helper methods in my BunnyAdoptionGUI class, as I noticed some methods
   don't follow the single responsibility principle
 - Reduce the number of JLabels and JButtons introduced in the BunnyAdoptionGUI class by creating a more general
   JLabel/Jbutton name and reusing it for various JLabels/JButtons with similar characteristics
